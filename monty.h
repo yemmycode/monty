@@ -48,38 +48,6 @@ typedef struct Bus
     char *content;
 } Bus;
 
-void free_stack(stack_t *head)
-{
-    stack_t *temp;
-
-    while (head != NULL)
-    {
-        temp = head;
-        head = head->next;
-        free(temp);
-    }
-}
-
-void addnode(stack_t **head, int n)
-{
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    new_node->n = n;
-    new_node->prev = NULL;
-    new_node->next = *head;
-
-    if (*head != NULL)
-        (*head)->prev = new_node;
-
-    *head = new_node;
-}
-
-extern Bus bus;
 
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
@@ -87,6 +55,7 @@ char  *clean_line(char *content);
 void f_push(stack_t **head, unsigned int number);
 void f_pall(stack_t **head, unsigned int number);
 void f_pint(stack_t **head, unsigned int number);
+void print_f(stack_t **head, unsigned int counter, Bus);
 int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
 void free_stack(stack_t *head);
 void f_pop(stack_t **head, unsigned int counter);
