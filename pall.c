@@ -1,27 +1,19 @@
 #include "monty.h"
 
 /**
-* print_stack - Displays the stack elements
-* @stack_head: Pointer to the head of the stack
-* @line_count: Line count (not used)
-*
-* Description: This function prints all the elements of the stack.
-* Each element is printed followed by a newline character.
-*
-* Return: void
+* f_pall - Prints all the values on the stack, starting from the top.
+* @head: A pointer to the top of the stack.
+* @counter: Unused parameter.
+* Return: This function does not return a value.
 */
-void print_stack(stack_t **stack_head, unsigned int line_count) 
+void f_pall(stack_t **head, unsigned int counter)
 {
-stack_t *current_node;
-(void)line_count;
+stack_t *current = *head;
+(void)counter;
 
-current_node = *stack_head;
-if (current_node == NULL)
-return;
-
-while (current_node) 
+while (current != NULL)
 {
-printf("%d\n", current_node->n);
-current_node = current_node->next;
+printf("%d\n", current->n);
+current = current->next;
 }
 }
