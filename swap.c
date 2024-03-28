@@ -4,20 +4,20 @@
 * f_swap - Swaps the values of the top two elements of the stack
 * @head: Pointer to the top node of the stack
 * @counter: The current line number in the script
-* Return: Void,
+* Return: Void, 
 */
 void f_swap(stack_t **head, unsigned int counter)
 {
-stack_t *h;
-int len = 0, aux;
+stack_t *current_node;
+int stack_length = 0, temp_value;
 
-h = *head;
-while (h)
+current_node = *head;
+while (current_node)
 {
-h = h->next;
-len++;
+current_node = current_node->next;
+stack_length++;
 }
-if (len < 2)
+if (stack_length < 2)
 {
 fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
 fclose(bus.file);
@@ -25,8 +25,8 @@ free(bus.content);
 free_stack(*head);
 exit(EXIT_FAILURE);
 }
-h = *head;
-aux = h->n;
-h->n = h->next->n;
-h->next->n = aux;
+current_node = *head;
+temp_value = current_node->n;
+current_node->n = current_node->next->n;
+current_node->next->n = temp_value;
 }

@@ -9,6 +9,7 @@
 void f_div(stack_t **head, unsigned int counter)
 {
 stack_t *temp;
+
 int stack_len = 0, result;
 
 temp = *head;
